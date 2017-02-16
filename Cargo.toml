@@ -1,0 +1,8 @@
+[package]
+name = "meyda"
+version = "0.1.0"
+authors = ["jakubfiala <mu201jf@gold.ac.uk>"]
+
+[dependencies]
+rustfft = "1.0.1"
+num = "0.1.36"
