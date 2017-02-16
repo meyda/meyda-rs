@@ -10,15 +10,25 @@ Later on, I might look into file loading, config, overlapping frames, etc. etc. 
 
 ## Usage
 
+This example creates a 1024-sample frame of white noise, and calculates its RMS and power spectrum.
+
 ```rust
 extern crate meyda;
+extern crate rand;
+
+use rand::Rng;
 
 fn main() {
-  let signal = vec![0.2_f64, 0.5_f64, 0.7_f64];
+  const BUFFER_SIZE: u32 = 1024;
+
+  let mut generator = rand::thread_rng();
+  let signal: Vec<f64> = generator.gen_iter::<f64>()
+      .take(buffer_size as usize)
+      .collect();
 
   let rms = meyda::get_rms(&signal);
-  let pow_spec = meyda::get_power_spectrum(&signal);
+  let power_spectrum = meyda::get_power_spectrum(&signal);
 
-  println!("RMS is {}", rms);
+  println!("RMS is {} \n power spectrum is {:?}", rms, power_spectrum);
 }
 ```
