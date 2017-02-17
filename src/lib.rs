@@ -1,3 +1,6 @@
+/**
+ * PUBLIC API
+ */
 mod extractors;
 
 pub fn get_rms(signal : &Vec<f64>) -> f64 {
