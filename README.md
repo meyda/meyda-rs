@@ -19,16 +19,19 @@ extern crate rand;
 use rand::Rng;
 
 fn main() {
-  const BUFFER_SIZE: u32 = 1024;
+  const BUFFER_SIZE: usize = 1024;
 
+  // create a vector of white noise
   let mut generator = rand::thread_rng();
-  let signal: Vec<f64> = generator.gen_iter::<f64>()
-      .take(buffer_size as usize)
-      .collect();
+  let signal: Vec<f64> = vec![0; BUFFER_SIZE].iter()
+    .map(|&sample| generator.gen_range(-1_f64, 1_f64))
+    .collect();
 
+  // compute features
   let rms = meyda::get_rms(&signal);
+  let zcr = meyda::get_zcr(&signal);
   let power_spectrum = meyda::get_power_spectrum(&signal);
 
-  println!("RMS is {} \n power spectrum is {:?}", rms, power_spectrum);
+  println!("RMS is {} \n power spectrum is {:?}, zcr is {:?}", rms, power_spectrum, zcr);
 }
 ```
