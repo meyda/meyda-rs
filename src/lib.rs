@@ -31,3 +31,7 @@ pub fn get_spectral_centroid(signal : &Vec<f64>) -> f64 {
 pub fn get_spectral_flatness(signal : &Vec<f64>) -> f64 {
   extractors::spectral_flatness::compute(signal)
 }
+
+pub fn get_spectral_kurtosis(signal : &Vec<f64>) -> f64 {
+  extractors::spectral_kurtosis::compute(signal)
+}
