@@ -2,6 +2,10 @@
  * Extractors index
  */
 pub mod rms;
-pub mod power_spectrum;
-pub mod amp_spectrum;
+pub mod energy;
 pub mod zcr;
+
+pub mod amp_spectrum;
+pub mod power_spectrum;
+
+pub mod spectral_centroid;
