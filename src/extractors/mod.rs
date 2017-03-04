@@ -9,3 +9,4 @@ pub mod amp_spectrum;
 pub mod power_spectrum;
 
 pub mod spectral_centroid;
+pub mod spectral_flatness;

@@ -27,3 +27,7 @@ pub fn get_power_spectrum(signal : &Vec<f64>) -> Vec<f64> {
 pub fn get_spectral_centroid(signal : &Vec<f64>) -> f64 {
   extractors::spectral_centroid::compute(signal)
 }
+
+pub fn get_spectral_flatness(signal : &Vec<f64>) -> f64 {
+  extractors::spectral_flatness::compute(signal)
+}
