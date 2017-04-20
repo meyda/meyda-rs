@@ -8,10 +8,12 @@ pub fn mu(exp: i32, vec: &Vec<f64>) -> f64 {
   fraction.0 / fraction.1
 }
 
+#[allow(dead_code)]
 fn bark_map(bin: f64) -> f64 {
   13.0 * (bin / 1315.8).atan() + 3.5 * (bin / 7518.0).powi(2).atan()
 }
 
+#[allow(dead_code)]
 pub fn bark_scale(length: usize, sample_rate: f64, buffer_size: f64) -> Vec<f64> {
   let scale = vec![0; length];
 
@@ -20,3 +22,5 @@ pub fn bark_scale(length: usize, sample_rate: f64, buffer_size: f64) -> Vec<f64>
     .map(|s| bark_map(s.0 as f64 * sample_rate / buffer_size))
     .collect()
 }
+
+

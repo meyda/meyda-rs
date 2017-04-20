@@ -11,3 +11,4 @@ pub mod power_spectrum;
 pub mod spectral_centroid;
 pub mod spectral_flatness;
 pub mod spectral_kurtosis;
+pub mod spectral_rolloff;
