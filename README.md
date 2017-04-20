@@ -6,7 +6,7 @@ This project is heavily WIP and it's not wise to use it in production yet.
 
 The plan is to initially provide a set of pure functions which operate on 64-bit vectors, each vector being a frame of audio.
 
-Later on, I might look into file loading, config, overlapping frames, etc. etc. to approach the API of Meyda.
+Later on, `meyda-rs` should support file loading, configuration, overlapping frames, etc. to approach the API of Meyda.
 
 ## Usage
 
