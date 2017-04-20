@@ -2,7 +2,7 @@
 
 *It's like [meyda](https://github.com/hughrawlinson/meyda), but for Rust.*
 
-A side-project I'm using to learn Rust and get back to the realm of sensible, typed languages.
+This project is heavily WIP and it's not wise to use it in production yet.
 
 The plan is to initially provide a set of pure functions which operate on 64-bit vectors, each vector being a frame of audio.
 
