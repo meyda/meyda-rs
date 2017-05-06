@@ -4,6 +4,8 @@
 mod extractors;
 mod utils;
 
+pub type Hz = utils::Hz;
+
 pub fn get_rms(signal: &Vec<f64>) -> f64 {
   extractors::rms::compute(signal)
 }
@@ -38,4 +40,8 @@ pub fn get_spectral_kurtosis(signal: &Vec<f64>) -> f64 {
 
 pub fn get_spectral_rolloff(signal: &Vec<f64>, sample_rate: f64, rolloff_point: Option<f64>) -> f64 {
   extractors::spectral_rolloff::compute(signal, sample_rate, rolloff_point)
+}
+
+pub fn get_specific_loudness(signal: &Vec<f64>, sample_rate: f64) -> Vec<f64> {
+  extractors::specific_loudness::compute(signal, sample_rate)
 }
