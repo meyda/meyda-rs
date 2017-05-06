@@ -13,4 +13,4 @@ pub mod spectral_flatness;
 pub mod spectral_kurtosis;
 pub mod spectral_rolloff;
 
-pub mod specific_loudness;
+pub mod bark_loudness;

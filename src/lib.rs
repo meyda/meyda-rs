@@ -42,6 +42,6 @@ pub fn get_spectral_rolloff(signal: &Vec<f64>, sample_rate: f64, rolloff_point: 
   extractors::spectral_rolloff::compute(signal, sample_rate, rolloff_point)
 }
 
-pub fn get_specific_loudness(signal: &Vec<f64>, sample_rate: f64) -> Vec<f64> {
-  extractors::specific_loudness::compute(signal, sample_rate)
+pub fn get_bark_loudness(signal: &Vec<f64>, sample_rate: f64) -> Vec<f64> {
+  extractors::bark_loudness::compute(signal, sample_rate)
 }
