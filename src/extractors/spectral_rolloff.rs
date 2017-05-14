@@ -13,11 +13,10 @@ pub fn compute(signal : &Vec<f64>, sample_rate: f64, rolloff_point: Option<f64>)
   let nyq_bin = sample_rate / (2.0 * amp_spec.len() as f64 - 1.0);
   let mut integral: f64 = amp_spec.iter().sum();
 
-  let threshold: f64;
-  match rolloff_point {
-    Some(_) => threshold = rolloff_point.unwrap() * integral,
-    None => threshold = 99.0 * integral,
-  }
+  let threshold = match rolloff_point {
+    Some(rf) => rf * integral,
+    None => 99.0 * integral,
+  };
 
   let mut reader = amp_spec.len() as i32 - 1;
 
