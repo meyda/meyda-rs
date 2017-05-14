@@ -1,5 +1,7 @@
 # meyda-rs
 
+[![Build Status](https://travis-ci.org/meyda/meyda-rs.svg?branch=master)](https://travis-ci.org/meyda/meyda-rs)
+
 *It's like [meyda](https://github.com/hughrawlinson/meyda), but for Rust.*
 
 This project is heavily WIP and it's not wise to use it in production yet.
