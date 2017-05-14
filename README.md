@@ -39,7 +39,7 @@ fn main() {
   let spectral_flatness = meyda::get_spectral_flatness(&signal);
   let spectral_kurtosis = meyda::get_spectral_kurtosis(&signal);
   let spectral_rolloff = meyda::get_spectral_rolloff(&signal, SAMPLE_RATE, 0.95);
-  let bark_loudness = meyda::get_bark_loudness(&signal);
+  let bark_loudness = meyda::get_bark_loudness(&signal, SAMPLE_RATE);
 
   println!("RMS is {} \n energy is {:?}, zcr is {:?},\n spectral centroid is {},\n spectral flatness is {},\n spectral kurtosis is {},\n spectral rolloff is {},\n Bark loudness is {}", rms, energy, zcr, spectral_centroid, spectral_flatness, spectral_kurtosis,
    spectral_rolloff, bark_loudness);
