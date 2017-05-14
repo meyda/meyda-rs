@@ -4,7 +4,7 @@
 
 This project is heavily WIP and it's not wise to use it in production yet.
 
-The plan is to initially provide a set of pure functions which operate on 64-bit vectors, each vector being a frame of audio.
+The plan is to initially provide a set of pure functions which operate on 64-bit float vectors, each vector being a frame of audio.
 
 Later on, `meyda-rs` should support file loading, configuration, overlapping frames, etc. to approach the API of Meyda.
 
@@ -35,7 +35,16 @@ fn main() {
   let spectral_centroid = meyda::get_spectral_centroid(&signal);
   let spectral_flatness = meyda::get_spectral_flatness(&signal);
   let spectral_kurtosis = meyda::get_spectral_kurtosis(&signal);
+  let spectral_rolloff = meyda::get_spectral_rolloff(&signal);
+  let bark_loudness = meyda::get_bark_loudness(&signal);
 
-  println!("RMS is {} \n energy is {:?}, zcr is {:?},\n spectral centroid is {},\n spectral flatness is {},\n spectral kurtosis is {}", rms, energy, zcr, spectral_centroid, spectral_flatness, spectral_kurtosis);
+  println!("RMS is {} \n energy is {:?}, zcr is {:?},\n spectral centroid is {},\n spectral flatness is {},\n spectral kurtosis is {},\n spectral rolloff is {},\n Bark loudness is {}", rms, energy, zcr, spectral_centroid, spectral_flatness, spectral_kurtosis,
+   spectral_rolloff, bark_loudness);
 }
 ```
+
+## Development
+
+Contributions are always welcome. The library *should* be test-driven and all new features *should* have accompanying tests.
+
+The tests are located in the eponymous directory. There is one file per feature. Tests can be run with `cargo test`.

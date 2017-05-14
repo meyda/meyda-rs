@@ -36,4 +36,3 @@ pub fn compute(signal: &Vec<f64>, sample_rate: f64) -> Vec<f64> {
 
   loudnesses
 }
-

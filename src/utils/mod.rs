@@ -50,5 +50,3 @@ pub fn bark_limits(spec_size: usize, sample_rate: f64, buffer_size: f64) -> Vec<
   })
   .collect()
 }
-
-
