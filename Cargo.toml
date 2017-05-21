@@ -6,9 +6,9 @@ authors = ["jakubfiala <mu201jf@gold.ac.uk>"]
 [dependencies]
 rustfft = "1.0.1"
 num = "0.1.36"
-approx = "0.1.1"
 
 [dev-dependencies]
+approx = "0.1.1"
 serde = "1.0.7"
 serde_derive = "1.0.7"
 serde_json = "1.0"
