@@ -14,3 +14,26 @@ pub fn compute(signal : &Vec<f64>) -> f64 {
 
   return zcr_tuple.1;
 }
+
+#[cfg(test)]
+mod tests {
+  use super::compute;
+  use std::f64;
+  use utils::test;
+
+  const FLOAT_PRECISION: f64 = 0.000_000_010;
+
+  fn test_against(dataset: &test::data::TestDataSet) -> () {
+    let zcr = compute(&dataset.signal);
+    assert_relative_eq!(zcr, dataset.features.zcr, epsilon = f64::EPSILON, max_relative = FLOAT_PRECISION);
+  }
+
+  #[test]
+  fn test_zcr() {
+    let datasets = test::data::get_all();
+
+    for dataset in datasets.iter() {
+      test_against(dataset);
+    }
+  }
+}

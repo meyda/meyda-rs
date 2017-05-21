@@ -1,6 +1,10 @@
-/**
- * PUBLIC API
- */
+#[cfg(test)]
+#[macro_use]
+extern crate serde_derive;
+#[cfg(test)]
+#[macro_use]
+extern crate approx;
+
 mod extractors;
 mod utils;
 

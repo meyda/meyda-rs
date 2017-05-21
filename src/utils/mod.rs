@@ -1,3 +1,4 @@
+pub mod test;
 pub type Hz = f64;
 
 pub fn mu(exp: i32, vec: &Vec<f64>) -> f64 {
