@@ -50,4 +50,4 @@ fn main() {
 
 Contributions are always welcome. The library *should* be test-driven and all new features *should* have accompanying tests.
 
-The tests are located in the eponymous directory. There is one file per feature. Tests can be run with `cargo test`.
+Tests can be run with `cargo test` – each extractor function *should* have a test module in the same file, and should make use of [meyda/gauge](https://github.com/meyda/gauge), which is submodule'd in `/src/utils`. The deserialized gauge data is provided by `utils::test` as a vector of `TestDataSet` structures.
