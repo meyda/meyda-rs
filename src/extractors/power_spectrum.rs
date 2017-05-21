@@ -1,4 +1,4 @@
-use extractors::amp_spectrum as amp_spectrum;
+use extractors::amp_spectrum;
 /**
  * @brief      POWER SPECTRUM
  *
@@ -6,12 +6,10 @@ use extractors::amp_spectrum as amp_spectrum;
  *
  * @return     The power spectrum vector (Vec::<f64>)
  */
-pub fn compute(signal : &Vec<f64>) -> Vec<f64> {
-  let amp_spec: Vec<f64> = amp_spectrum::compute(signal);
+pub fn compute(signal: &Vec<f64>) -> Vec<f64> {
+    let amp_spec: Vec<f64> = amp_spectrum::compute(signal);
 
-  let pow_spec: Vec<f64> = amp_spec.iter()
-    .map(|bin| bin.powi(2))
-    .into_iter().collect();
+    let pow_spec: Vec<f64> = amp_spec.iter().map(|bin| bin.powi(2)).into_iter().collect();
 
-  return pow_spec;
+    return pow_spec;
 }

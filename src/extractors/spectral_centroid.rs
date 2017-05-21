@@ -1,5 +1,5 @@
 use utils;
-use extractors::amp_spectrum as amp_spectrum;
+use extractors::amp_spectrum;
 
 /**
  * @brief      SPECTRAL CENTROID
@@ -8,8 +8,8 @@ use extractors::amp_spectrum as amp_spectrum;
  *
  * @return     the spectral centroid value (f64)
  */
-pub fn compute(signal : &Vec<f64>) -> f64 {
-  let amp_spec: Vec<f64> = amp_spectrum::compute(signal);
+pub fn compute(signal: &Vec<f64>) -> f64 {
+    let amp_spec: Vec<f64> = amp_spectrum::compute(signal);
 
-  utils::mu(1, &amp_spec)
+    utils::mu(1, &amp_spec)
 }
