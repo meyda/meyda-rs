@@ -7,6 +7,7 @@ pub mod data {
     use std::fs::File;
     use std::io::prelude::*;
     use std::path::Path;
+    use std::f64;
 
     #[allow(non_snake_case)]
     #[derive(Serialize, Deserialize)]
@@ -72,5 +73,17 @@ pub mod data {
         let paths = ["./src/utils/gauge/gauge01.json"];
 
         paths.iter().map(|p| load_dataset(p)).collect()
+    }
+
+    pub fn approx_compare_vec(vec1: &Vec<f64>, vec2: &Vec<f64>, precision: f64) -> () {
+        #[allow(unused_variables)]
+        let zipped: Vec<_> = vec1.iter()
+            .zip(vec2.iter())
+            .inspect(|x| {
+                assert_relative_eq!(x.0, x.1, max_relative = precision, epsilon = f64::EPSILON)
+            })
+            .collect();
+
+        ()
     }
 }

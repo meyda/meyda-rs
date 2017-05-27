@@ -1,11 +1,16 @@
 pub mod test;
 pub type Hz = f64;
 
-pub fn mu(exp: i32, vec: &Vec<f64>) -> f64 {
-    let fraction = vec.iter()
+pub fn mu(exp: i32, vector: &Vec<f64>) -> f64 {
+    let fraction = vector.iter()
         .enumerate()
-        .fold((0_f64, 0_f64),
-              |acc, x| (acc.0 + (x.0 as f64).powi(exp), acc.1 + x.1));
+        .fold((0.0, 0.0),
+              |acc, x| {
+                let num_inc = (x.0 as f64).powi(exp) * x.1.abs();
+                let den_inc = x.1;
+
+                (acc.0 + num_inc, acc.1 + den_inc)
+            });
 
     fraction.0 / fraction.1
 }
