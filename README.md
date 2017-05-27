@@ -1,6 +1,7 @@
 # meyda-rs
 
 [![Build Status](https://travis-ci.org/meyda/meyda-rs.svg?branch=master)](https://travis-ci.org/meyda/meyda-rs)
+[![Code coverage](https://codecov.io/github/meyda/meyda-rs/coverage.svg?branch=master)](https://codecov.io/gh/meyda/meyda-rs)
 
 *It's like [meyda](https://github.com/hughrawlinson/meyda), but for Rust.*
 
