@@ -1,5 +1,5 @@
+extern crate num_complex;
 extern crate rustfft;
-extern crate num;
 /**
  * @brief      AMPLITUDE SPECTRUM
  *
@@ -9,24 +9,24 @@ extern crate num;
  */
 pub fn compute(signal: &Vec<f64>) -> Vec<f64> {
     let fft_len = signal.len();
-    let mut fft = rustfft::FFT::new(fft_len, false);
+    let fft = rustfft::FFTplanner::new(false).plan_fft(fft_len);
 
-    let complex_signal: Vec<_> = signal
+    let mut complex_signal: Vec<_> = signal
         .iter()
-        .map(|&sample| num::Complex::new(sample, 0_f64))
+        .map(|&sample| num_complex::Complex::new(sample, 0_f64))
         .collect();
 
-    let mut spectrum = vec![num::Complex{re: 0.0, im: 0.0}; fft_len];
+    let mut spectrum = vec![num_complex::Complex { re: 0.0, im: 0.0 }; fft_len];
 
-    fft.process(&complex_signal, &mut spectrum);
+    fft.process(&mut complex_signal, &mut spectrum);
 
     let amp_spectrum: Vec<f64> = spectrum
         .iter()
         .take(spectrum.len() / 2)
         .map(|bin| {
-                 let tmp = bin.re.powf(2_f64) + bin.im.powf(2_f64);
-                 tmp.sqrt()
-             })
+            let tmp = bin.re.powf(2_f64) + bin.im.powf(2_f64);
+            tmp.sqrt()
+        })
         .collect();
 
     return amp_spectrum;
@@ -43,7 +43,11 @@ mod tests {
     fn test_against(dataset: &test::data::TestDataSet) -> () {
         let amp_spec = compute(&dataset.signal);
 
-        test::data::approx_compare_vec(&amp_spec, &dataset.features.amplitudeSpectrum, FLOAT_PRECISION);
+        test::data::approx_compare_vec(
+            &amp_spec,
+            &dataset.features.amplitudeSpectrum,
+            FLOAT_PRECISION,
+        );
     }
 
     #[test]
