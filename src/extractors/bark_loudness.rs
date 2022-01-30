@@ -25,3 +25,30 @@ pub fn compute(signal: &Vec<f64>, sample_rate: f64) -> Vec<f64> {
 
     loudnesses
 }
+
+#[cfg(test)]
+mod tests {
+    use super::compute;
+    use std::f64;
+    use utils::test;
+
+    const FLOAT_PRECISION: f64 = 0.333_333;
+    const SAMPLE_RATE: f64 = 44100f64;
+
+    fn test_against(dataset: &test::data::TestDataSet) -> () {
+        let bark_loudness = compute(&dataset.signal, SAMPLE_RATE);
+
+        println!("{:?}", &bark_loudness);
+
+        test::data::approx_compare_vec(&bark_loudness, &dataset.features.loudness, FLOAT_PRECISION);
+    }
+
+    #[test]
+    fn test_bark_loudness() {
+        let datasets = test::data::get_all();
+
+        for dataset in datasets.iter() {
+            test_against(dataset);
+        }
+    }
+}
