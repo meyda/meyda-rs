@@ -1,13 +1,6 @@
-use utils;
 use extractors::amp_spectrum;
+use utils;
 
-/**
- * @brief      SPECTRAL CENTROID
- *
- * @param      signal  The signal vector (Vec::<f64>)
- *
- * @return     the spectral centroid value (f64)
- */
 pub fn compute(signal: &Vec<f64>) -> f64 {
     let amp_spec: Vec<f64> = amp_spectrum::compute(signal);
 
@@ -25,10 +18,12 @@ mod tests {
     fn test_against(dataset: &test::data::TestDataSet) -> () {
         let sc = compute(&dataset.signal);
 
-        assert_relative_eq!(sc,
-                            dataset.features.spectralCentroid,
-                            epsilon = f64::EPSILON,
-                            max_relative = FLOAT_PRECISION);
+        assert_relative_eq!(
+            sc,
+            dataset.features.spectralCentroid,
+            epsilon = f64::EPSILON,
+            max_relative = FLOAT_PRECISION
+        );
     }
 
     #[test]
@@ -40,4 +35,3 @@ mod tests {
         }
     }
 }
-

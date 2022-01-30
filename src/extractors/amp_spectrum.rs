@@ -1,12 +1,6 @@
 extern crate num_complex;
 extern crate rustfft;
-/**
- * @brief      AMPLITUDE SPECTRUM
- *
- * @param      signal  The signal vector (Vec::<f64>)
- *
- * @return     The amplitude spectrum vector (Vec::<f64>)
- */
+
 pub fn compute(signal: &Vec<f64>) -> Vec<f64> {
     let fft_len = signal.len();
     let fft = rustfft::FFTplanner::new(false).plan_fft(fft_len);

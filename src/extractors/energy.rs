@@ -1,10 +1,3 @@
-/**
- * @brief      ENERGY
- *
- * @param      signal  The signal vector (Vec::<f64>)
- *
- * @return     the energy value (f64)
- */
 pub fn compute(signal: &Vec<f64>) -> f64 {
     let energy = signal
         .iter()
@@ -23,10 +16,12 @@ mod tests {
 
     fn test_against(dataset: &test::data::TestDataSet) -> () {
         let energy = compute(&dataset.signal);
-        assert_relative_eq!(energy,
-                            dataset.features.energy,
-                            epsilon = f64::EPSILON,
-                            max_relative = FLOAT_PRECISION);
+        assert_relative_eq!(
+            energy,
+            dataset.features.energy,
+            epsilon = f64::EPSILON,
+            max_relative = FLOAT_PRECISION
+        );
     }
 
     #[test]

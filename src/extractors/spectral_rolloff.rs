@@ -1,12 +1,5 @@
 use extractors::amp_spectrum;
 
-/**
- * @brief      SPECTRAL ROLLOFF
- *
- * @param      signal  The signal vector (Vec::<f64>)
- *
- * @return     the spectral rolloff value (f64)
- */
 pub fn compute(signal: &Vec<f64>, sample_rate: f64, rolloff_point: Option<f64>) -> f64 {
     let amp_spec: Vec<f64> = amp_spectrum::compute(signal);
 
@@ -39,10 +32,12 @@ mod tests {
     fn test_against(dataset: &test::data::TestDataSet) -> () {
         let sr = compute(&dataset.signal, dataset.info.sampleRate as f64, None);
 
-        assert_relative_eq!(sr,
-                            dataset.features.spectralRolloff,
-                            epsilon = f64::EPSILON,
-                            max_relative = FLOAT_PRECISION);
+        assert_relative_eq!(
+            sr,
+            dataset.features.spectralRolloff,
+            epsilon = f64::EPSILON,
+            max_relative = FLOAT_PRECISION
+        );
     }
 
     #[test]

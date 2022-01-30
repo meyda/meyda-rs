@@ -1,14 +1,6 @@
-use utils;
 use extractors::amp_spectrum;
+use utils;
 
-/**
- * @brief      SPECIFIC BARK LOUDNESS
- *
- * @param      signal  The signal vector (Vec::<f64>)
- * @param      sample_rate  The signal sample rate (f64)
- *
- * @return     Loudness in each Bark band (Vec::<f64>)
- */
 pub fn compute(signal: &Vec<f64>, sample_rate: f64) -> Vec<f64> {
     let mut amp_spec: Vec<f64> = amp_spectrum::compute(signal);
 
