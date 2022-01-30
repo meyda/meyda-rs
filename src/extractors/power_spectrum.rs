@@ -13,3 +13,31 @@ pub fn compute(signal: &Vec<f64>) -> Vec<f64> {
 
     return pow_spec;
 }
+
+#[cfg(test)]
+mod tests {
+    use super::compute;
+    use std::f64;
+    use utils::test;
+
+    const FLOAT_PRECISION: f64 = 0.333_333;
+
+    fn test_against(dataset: &test::data::TestDataSet) -> () {
+        let power_spec = compute(&dataset.signal);
+
+        test::data::approx_compare_vec(
+            &power_spec,
+            &dataset.features.powerSpectrum,
+            FLOAT_PRECISION,
+        );
+    }
+
+    #[test]
+    fn test_power_spectrum() {
+        let datasets = test::data::get_all();
+
+        for dataset in datasets.iter() {
+            test_against(dataset);
+        }
+    }
+}
