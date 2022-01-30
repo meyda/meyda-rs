@@ -52,3 +52,20 @@ pub fn get_spectral_rolloff(signal: &Vec<f64>,
 pub fn get_bark_loudness(signal: &Vec<f64>, sample_rate: f64) -> Vec<f64> {
     extractors::bark_loudness::compute(signal, sample_rate)
 }
+
+/// Spectral Slope
+///
+/// A measure of how ‘inclined’ the shape of the spectrum is. Calculated by
+/// performing linear regression on the amplitude spectrum.
+///
+/// Can be used to differentiate between different voice qualities, such as
+/// hissing, breathing and regular speech. Closely relates to spectral centroid
+/// and spectral rolloff.
+///
+/// ### Params
+///
+/// - `signal` The signal vector (`Vec<f64>`)
+/// - `sample_rate` The sample rate of the signal (Hz)
+pub fn get_spectral_slope(signal: &Vec<f64>, sample_rate: f64) -> f64 {
+    extractors::spectral_slope::compute(signal, sample_rate)
+}
