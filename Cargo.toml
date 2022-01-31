@@ -5,7 +5,7 @@ authors = ["jakubfiala <mu201jf@gold.ac.uk>"]
 
 [dependencies]
 rustfft = "3.0.0"
-num-complex = "0.2"
+num-complex = "0.4"
 
 [dev-dependencies]
 approx = "0.5.1"
