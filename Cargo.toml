@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["jakubfiala <mu201jf@gold.ac.uk>"]
 
 [dependencies]
-rustfft = "3.0.0"
+rustfft = "6.0.1"
 num-complex = "0.2"
 
 [dev-dependencies]
