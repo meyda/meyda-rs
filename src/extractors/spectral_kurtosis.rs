@@ -1,13 +1,6 @@
-use utils;
 use extractors::amp_spectrum;
+use utils;
 
-/**
- * @brief      SPECTRAL KURTOSIS
- *
- * @param      signal  The signal vector (Vec::<f64>)
- *
- * @return     the spectral kurtosis value (f64)
- */
 pub fn compute(signal: &Vec<f64>) -> f64 {
     let amp_spec: Vec<f64> = amp_spectrum::compute(signal);
 
@@ -16,8 +9,8 @@ pub fn compute(signal: &Vec<f64>) -> f64 {
         .into_iter()
         .collect();
 
-    let numerator = -3.0 * mus[0].powf(4.0) + 6.0 * mus[0] * mus[1] - 4.0 * mus[0] * mus[2] +
-                    mus[3];
+    let numerator =
+        -3.0 * mus[0].powf(4.0) + 6.0 * mus[0] * mus[1] - 4.0 * mus[0] * mus[2] + mus[3];
 
     let denominator = (mus[1] - mus[0].powf(2.0)).sqrt().powf(4.0);
 
@@ -35,10 +28,12 @@ mod tests {
     fn test_against(dataset: &test::data::TestDataSet) -> () {
         let sk = compute(&dataset.signal);
 
-        assert_relative_eq!(sk,
-                            dataset.features.spectralKurtosis,
-                            epsilon = f64::EPSILON,
-                            max_relative = FLOAT_PRECISION);
+        assert_relative_eq!(
+            sk,
+            dataset.features.spectralKurtosis,
+            epsilon = f64::EPSILON,
+            max_relative = FLOAT_PRECISION
+        );
     }
 
     #[test]

@@ -1,12 +1,5 @@
 use extractors::amp_spectrum;
 
-/**
- * @brief      SPECTRAL FLATNESS
- *
- * @param      signal  The signal vector (Vec::<f64>)
- *
- * @return     the spectral flatness value (f64)
- */
 pub fn compute(signal: &Vec<f64>) -> f64 {
     let amp_spec: Vec<f64> = amp_spectrum::compute(signal);
 
@@ -28,10 +21,12 @@ mod tests {
     fn test_against(dataset: &test::data::TestDataSet) -> () {
         let sf = compute(&dataset.signal);
 
-        assert_relative_eq!(sf,
-                            dataset.features.spectralFlatness,
-                            epsilon = f64::EPSILON,
-                            max_relative = FLOAT_PRECISION);
+        assert_relative_eq!(
+            sf,
+            dataset.features.spectralFlatness,
+            epsilon = f64::EPSILON,
+            max_relative = FLOAT_PRECISION
+        );
     }
 
     #[test]

@@ -1,10 +1,3 @@
-/**
- * @brief      ROOT MEAN SQUARE
- *
- * @param      signal  The signal vector (Vec::<f64>)
- *
- * @return     the RMS value (f64)
- */
 pub fn compute(signal: &Vec<f64>) -> f64 {
     let sum = signal
         .iter()
@@ -24,10 +17,12 @@ mod tests {
 
     fn test_against(dataset: &test::data::TestDataSet) -> () {
         let rms = compute(&dataset.signal);
-        assert_relative_eq!(rms,
-                            dataset.features.rms,
-                            epsilon = f64::EPSILON,
-                            max_relative = FLOAT_PRECISION);
+        assert_relative_eq!(
+            rms,
+            dataset.features.rms,
+            epsilon = f64::EPSILON,
+            max_relative = FLOAT_PRECISION
+        );
     }
 
     #[test]
