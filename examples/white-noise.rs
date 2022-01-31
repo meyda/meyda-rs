@@ -11,14 +11,14 @@ fn main() {
   let mut generator = rand::thread_rng();
   let signal: Vec<f64> = vec![0; BUFFER_SIZE]
     .iter()
-    .map(|&sample| generator.gen_range(-1_f64..1_f64))
+    .map(|&_sample| generator.gen_range(-1_f64..1_f64))
     .collect();
 
   // compute features
   let rms = meyda::get_rms(&signal);
   let energy = meyda::get_energy(&signal);
   let zcr = meyda::get_zcr(&signal);
-  let power_spectrum = meyda::get_power_spectrum(&signal);
+  // let power_spectrum = meyda::get_power_spectrum(&signal);
   let spectral_centroid = meyda::get_spectral_centroid(&signal);
   let spectral_flatness = meyda::get_spectral_flatness(&signal);
   let spectral_kurtosis = meyda::get_spectral_kurtosis(&signal);
