@@ -8,7 +8,7 @@ rustfft = "3.0.0"
 num-complex = "0.2"
 
 [dev-dependencies]
-approx = "0.1.1"
+approx = "0.5.1"
 serde = "1.0.7"
 serde_derive = "1.0.7"
 serde_json = "1.0"
