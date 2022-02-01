@@ -3,11 +3,10 @@ pub mod data {
     extern crate serde;
     extern crate serde_json;
 
-    use std::error::Error;
+    use std::f64;
     use std::fs::File;
     use std::io::prelude::*;
     use std::path::Path;
-    use std::f64;
 
     #[allow(non_snake_case)]
     #[derive(Serialize, Deserialize)]
@@ -51,19 +50,19 @@ pub mod data {
         let display = path.display();
 
         let mut file = match File::open(&path) {
-            Err(why) => panic!("couldn't open {}: {}", display, why.description()),
+            Err(why) => panic!("couldn't open {}: {}", display, why),
             Ok(file) => file,
         };
 
         let mut json_str = String::new();
         match file.read_to_string(&mut json_str) {
-            Err(why) => panic!("couldn't read {}: {}", display, why.description()),
+            Err(why) => panic!("couldn't read {}: {}", display, why),
             Ok(_) => (),
         }
 
         let data: TestDataSet = match serde_json::from_str(&json_str) {
             Ok(d) => d,
-            Err(err) => panic!("{:?}", err.description()),
+            Err(err) => panic!("{:?}", err),
         };
 
         data
@@ -77,7 +76,8 @@ pub mod data {
 
     pub fn approx_compare_vec(vec1: &Vec<f64>, vec2: &Vec<f64>, precision: f64) -> () {
         #[allow(unused_variables)]
-        let zipped: Vec<_> = vec1.iter()
+        let zipped: Vec<_> = vec1
+            .iter()
             .zip(vec2.iter())
             .inspect(|x| {
                 assert_relative_eq!(x.0, x.1, max_relative = precision, epsilon = f64::EPSILON)
