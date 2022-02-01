@@ -3,20 +3,18 @@ extern crate rustfft;
 
 pub fn compute(signal: &Vec<f64>) -> Vec<f64> {
     let fft_len = signal.len();
-    let fft = rustfft::FFTplanner::new(false).plan_fft(fft_len);
+    let fft = rustfft::FftPlanner::new().plan_fft_forward(fft_len);
 
-    let mut complex_signal: Vec<_> = signal
+    let mut fft_buffer: Vec<_> = signal
         .iter()
         .map(|&sample| num_complex::Complex::new(sample, 0_f64))
         .collect();
 
-    let mut spectrum = vec![num_complex::Complex { re: 0.0, im: 0.0 }; fft_len];
+    fft.process(&mut fft_buffer);
 
-    fft.process(&mut complex_signal, &mut spectrum);
-
-    let amp_spectrum: Vec<f64> = spectrum
+    let amp_spectrum: Vec<f64> = fft_buffer
         .iter()
-        .take(spectrum.len() / 2)
+        .take(fft_buffer.len() / 2)
         .map(|bin| {
             let tmp = bin.re.powf(2_f64) + bin.im.powf(2_f64);
             tmp.sqrt()
