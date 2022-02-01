@@ -1,5 +1,5 @@
-use extractors::amp_spectrum;
-use utils;
+use crate::extractors::amp_spectrum;
+use crate::utils;
 
 pub fn compute(signal: &Vec<f64>) -> f64 {
     let amp_spec: Vec<f64> = amp_spectrum::compute(signal);
@@ -10,8 +10,8 @@ pub fn compute(signal: &Vec<f64>) -> f64 {
 #[cfg(test)]
 mod tests {
     use super::compute;
+    use crate::utils::test;
     use std::f64;
-    use utils::test;
 
     const FLOAT_PRECISION: f64 = 0.000_001_000;
 

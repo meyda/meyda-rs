@@ -1,8 +1,8 @@
+pub mod energy;
 /**
  * Extractors index
  */
 pub mod rms;
-pub mod energy;
 pub mod zcr;
 
 pub mod amp_spectrum;

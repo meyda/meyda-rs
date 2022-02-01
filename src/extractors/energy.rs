@@ -9,8 +9,8 @@ pub fn compute(signal: &Vec<f64>) -> f64 {
 #[cfg(test)]
 mod tests {
     use super::compute;
+    use crate::utils::test;
     use std::f64;
-    use utils::test;
 
     const FLOAT_PRECISION: f64 = 0.000_000_010;
 

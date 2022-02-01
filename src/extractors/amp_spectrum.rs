@@ -1,13 +1,12 @@
-extern crate num_complex;
-extern crate rustfft;
+use rustfft::{num_complex::Complex, FftPlanner};
 
 pub fn compute(signal: &Vec<f64>) -> Vec<f64> {
     let fft_len = signal.len();
-    let fft = rustfft::FftPlanner::new().plan_fft_forward(fft_len);
+    let fft = FftPlanner::new().plan_fft_forward(fft_len);
 
     let mut fft_buffer: Vec<_> = signal
         .iter()
-        .map(|&sample| num_complex::Complex::new(sample, 0_f64))
+        .map(|&sample| Complex::new(sample, 0_f64))
         .collect();
 
     fft.process(&mut fft_buffer);
@@ -27,8 +26,8 @@ pub fn compute(signal: &Vec<f64>) -> Vec<f64> {
 #[cfg(test)]
 mod tests {
     use super::compute;
+    use crate::utils::test;
     use std::f64;
-    use utils::test;
 
     const FLOAT_PRECISION: f64 = 0.333_333;
 
