@@ -2,10 +2,10 @@
 name = "meyda"
 version = "0.1.0"
 authors = ["jakubfiala <mu201jf@gold.ac.uk>"]
+edition = "2021"
 
 [dependencies]
 rustfft = "6.0.1"
-num-complex = "0.4"
 
 [dev-dependencies]
 approx = "0.5.1"

@@ -1,5 +1,5 @@
-use extractors::amp_spectrum;
-use utils;
+use crate::extractors::amp_spectrum;
+use crate::utils;
 
 pub fn compute(signal: &Vec<f64>, sample_rate: f64) -> Vec<f64> {
     let mut amp_spec: Vec<f64> = amp_spectrum::compute(signal);
